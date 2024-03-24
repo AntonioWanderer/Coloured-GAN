@@ -12,4 +12,4 @@ def Potrait_Generator(generator, filename="result.jpg"):
     generated_image = generator.predict(seed)
     generated_image *= 255
     for i in range(Config.num_img):
-        cv2.imwrite(f"Results/{filename}", generated_image[i])
+        correct = cv2.imwrite(f"Results/{i}-{filename}", generated_image[i])
