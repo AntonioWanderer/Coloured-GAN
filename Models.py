@@ -1,4 +1,5 @@
 import Config
+import numpy
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Reshape, UpSampling2D, Conv2D, BatchNormalization
@@ -17,8 +18,8 @@ class GAN(tf.keras.Model):
         self.d_optimizer = d_optimizer
         self.g_optimizer = g_optimizer
         self.loss_fn = loss_fn
-        self.d_loss_metric = tf.keras.metrics.Mean(name="d_loss")
-        self.g_loss_metric = tf.keras.metrics.Mean(name="g_loss")
+        self.d_loss_metric = tf.keras.metrics.Mean(name="d_loss")  # Mean(name="d_loss")
+        self.g_loss_metric = tf.keras.metrics.Mean(name="d_loss")
 
     @property
     def metrics(self):
@@ -83,7 +84,7 @@ def getModel():
     generator.add(BatchNormalization(momentum=0.8))
     generator.add(Activation("relu"))
     generator.add(Conv2D(3, kernel_size=3, padding="same"))
-    generator.add(Activation("tanh"))
+    generator.add(Activation("sigmoid"))
     generator.summary()
 
     # Building a Discriminator

@@ -4,7 +4,6 @@ import Models, Config, Preprocessing
 from tensorflow.keras.callbacks import ModelCheckpoint
 from time import sleep
 
-
 if __name__ == "__main__":
     data = Preprocessing.ImportData()
     generator, discriminator, gan = Models.getModel()
@@ -13,9 +12,8 @@ if __name__ == "__main__":
 
     # history = gan.fit(data, epochs=Config.epochs,
     #                   callbacks=[ModelCheckpoint(filepath="Checkpoints/", save_best_only=True)])
-    for i in range(1000):
-        sleep(10)
-        history = gan.fit(data, epochs=1, steps_per_epoch=5)
+    for i in range(100000):
+        history = gan.fit(data, epochs=5)
         Preprocessing.Potrait_Generator(generator, filename=f"result{i}.jpg")
         generator.save(f"Checkpoints/generator{i}")
         discriminator.save(f"Checkpoints/discriminator{i}")
