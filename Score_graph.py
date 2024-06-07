@@ -15,11 +15,11 @@ z = numpy.polyfit(numpy.arange(len(y)), y, 1)
 p = numpy.poly1d(z)
 plt.plot(numpy.arange(len(y)), p(numpy.arange(len(y))))
 
-# z = numpy.polyfit(numpy.arange(len(y)), y, 5)
+# z = numpy.polyfit(numpy.arange(len(y)), y, 2)
 # p = numpy.poly1d(z)
 # plt.plot(numpy.arange(len(y)), p(numpy.arange(len(y))))
 
-plt.plot([0,len(y)], [sum(y)/len(y), sum(y)/len(y)])
+plt.plot([0, len(y)], [sum(y) / len(y), sum(y) / len(y)])
 
 plt.savefig("graph.png")
 # plt.show()
